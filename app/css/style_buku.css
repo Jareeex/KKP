@@ -1,0 +1,75 @@
+.container {
+    display: flex;
+    height: calc(100vh - 80px);
+  }
+
+  
+
+/* Tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+    min-width: 600px; /* Atur lebar minimum tabel */
+}
+
+/* Header kolom */
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap; /* Menghindari wrap text */
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Baris ganjil */
+table tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Baris hover */
+table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.btn-tambah {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-tambah:hover {
+    background-color: #0056b3;
+}
+
+/* CSS untuk tombol Edit dan Hapus pada halaman Daftar Semua Buku */
+
+/* Tombol Edit */
+.btn-edit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Tombol Hapus */
+.btn-hapus {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

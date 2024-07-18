@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:10.4
+    command: --transaction-isolation=READ-COMMITTED --log-bin=mysql-bin --binlog-format=ROW --init-file /docker-entrypoint-initdb.d/init.sql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: examplepassword
+      MYSQL_DATABASE: dbperpus
+      MYSQL_USER: root
+      MYSQL_PASSWORD: examplepassword
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: examplepassword
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    networks:
+      - my_network
+
+networks:
+  my_network:
+
+volumes:
+  db_data:
